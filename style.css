@@ -171,6 +171,19 @@ section {
     box-shadow: 0 6px 10px rgba(0,0,0,0.15);
 }
 
+.btn-secondary.btn-large {
+    /* Styles for large secondary buttons */
+    /* Retain base secondary styles, ensure transition is applied */
+    transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-secondary.btn-large:hover {
+    background-color: var(--color-secondary); /* Ensure these are explicitly set for hover */
+    color: var(--color-light);
+    transform: translateY(-2px) scale(1.05); /* Combine translateY with scale for hover */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* Enhanced shadow */
+}
+
 .btn-large {
     padding: 15px 35px;
     font-size: 1.25rem;
