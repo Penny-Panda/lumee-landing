@@ -29,6 +29,23 @@
         <div class="shape shape-3"></div>
     </section>
 
+    <!-- Coming Soon Teaser Section -->
+    <section id="coming-soon" class="coming-soon-section">
+        <div class="container">
+            <div class="teaser-card">
+                <div class="teaser-content">
+                    <i data-lucide="sparkles" class="feature-icon large-icon color-primary"></i>
+                    <h3><span>Something Epic is Coming!</span></h3>
+                    <p class="teaser-text">Psssst! Lumee is evolving into something bigger - a full-fledged discovery app and collectible card game featuring an exciting <strong>Global Turf Wars Battle Mode</strong>. Get ready to compete, conquer, and collect like never before!</p>
+                    <div class="teaser-highlight">
+                        <span class="highlight-icon">🌟</span>
+                        <p>Early Access members who join the waitlist will be the first to shape this adventure! Help us craft the perfect gaming experience and leave your mark on Lumee's evolution.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Why Join the Waitlist? Section -->
     <section id="why-join" class="why-join-section">
         <div class="container">
@@ -77,72 +94,27 @@
                 <div class="feature-item bordered-card">
                     <i data-lucide="camera" class="feature-icon large-icon color-primary"></i>
                     <h3>1. Snap &amp; Explore</h3>
-                    <!-- <img src="https://placehold.co/300x200/00AF67/1F1F1F?text=Forest+Scene" alt="Bamboo forest" class="card-image"> -->
                     <p>Point your camera at anything - a favorite landmark, a curious pet, or a daily object. Lumee sees the magic hidden in plain sight.</p>
                 </div>
                 <div class="feature-item bordered-card">
                     <i data-lucide="sparkles" class="feature-icon large-icon color-secondary"></i>
                     <h3>2. AI Creates Magic</h3>
-                    <!-- <img src="https://placehold.co/300x200/00C3E7/1F1F1F?text=Coastal+Magic" alt="Scenic coastline" class="card-image"> -->
                     <p>Our advanced AI instantly crafts a unique trading card, complete with captivating lore, balanced stats, and stunning artwork based on your photo.</p>
                 </div>
                 <div class="feature-item bordered-card">
                     <i data-lucide="layers" class="feature-icon large-icon color-accent"></i>
                     <h3>3. Collect Your World</h3>
-                    <!-- <img src="https://placehold.co/300x200/E60012/1F1F1F?text=City+Collection" alt="City street" class="card-image"> -->
                     <p>Build an ever-growing collection of cards that tell the story of your adventures and discoveries. Each card is a memory, a piece of your world.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Why You'll Love Lumee Section -->
-    <!--
-    <section id="why-love-lumee" class="why-love-lumee-section">
-        <div class="container">
-            <h2>Why You'll Love Lumee</h2>
-            <p class="section-sub-headline">Explore a new dimension of creativity and collection.</p>
-            <div class="features-grid six-items-grid">
-                <div class="feature-item bordered-card small-card style-as-per-image">
-                    <div class="icon-circle-bg bg-yellow"><i data-lucide="infinity" class="feature-icon"></i></div>
-                    <h4>Endless Uniqueness</h4>
-                    <p>Every photo generates a one-of-a-kind card. Your collection will be as unique as your perspective.</p>
-                </div>
-                <div class="feature-item bordered-card small-card style-as-per-image">
-                    <div class="icon-circle-bg bg-blue"><i data-lucide="cpu" class="feature-icon"></i></div>
-                    <h4>AI-Powered Creativity</h4>
-                    <p>Our intelligent AI crafts captivating lore, rarity, and balanced stats for each card, making every discovery exciting.</p>
-                </div>
-                <div class="feature-item bordered-card small-card style-as-per-image">
-                    <div class="icon-circle-bg bg-green"><i data-lucide="image" class="feature-icon"></i></div>
-                    <h4>Stunning Visuals</h4>
-                    <p>Each card is brought to life with beautiful templates selected by AI to match the essence of your photo.</p>
-                </div>
-                <div class="feature-item bordered-card small-card style-as-per-image">
-                    <div class="icon-circle-bg bg-red"><i data-lucide="book-open" class="feature-icon"></i></div>
-                    <h4>Discover Rich Lore</h4>
-                    <p>Uncover imaginative stories and descriptions that add depth and personality to your collected cards.</p>
-                </div>
-                <div class="feature-item bordered-card small-card style-as-per-image">
-                    <div class="icon-circle-bg bg-yellow"><i data-lucide="bar-chart-2" class="feature-icon"></i></div>
-                    <h4>Strategic Stats</h4>
-                    <p>Distinct and unique stats based on the power, the photographic skill and the effort that you yourself undertook to get that snap!</p>
-                </div>
-                <div class="feature-item bordered-card small-card style-as-per-image">
-                    <div class="icon-circle-bg bg-blue"><i data-lucide="gift" class="feature-icon"></i></div>
-                    <h4>Capture &amp; Collect Memories</h4>
-                    <p>Transform everyday moments and grand adventures into tangible, collectible memories you can cherish.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-    -->
-
     <!-- A Glimpse of the Magic Section -->
     <section id="glimpse-of-magic" class="glimpse-magic-section">
         <div class="container">
             <h2>A Glimpse of the Magic</h2>
-            <p class="section-sub-headline">Imagine the unique cards you'll create from your own world! Here are a few examples:</p>
+            <p class="section-sub-headline">Imagine the unique cards you'll create from your own world! <br> Here are a few examples:</p>
             <div class="lumee-cards-grid">
                 <div class="lumee-card-outer">
                     <div class="lumee-card-inner common">
@@ -226,6 +198,22 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+            });
+        });
+
+        // Teaser toggle functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const teaser = document.getElementById('coming-soon');
+            const teaserToggle = teaser.querySelector('.teaser-toggle');
+            
+            // Show teaser after a delay
+            setTimeout(() => {
+                teaser.classList.add('slide-in');
+            }, 2000);
+
+            // Toggle teaser visibility
+            teaserToggle.addEventListener('click', () => {
+                teaser.classList.toggle('slide-in');
             });
         });
     </script>
