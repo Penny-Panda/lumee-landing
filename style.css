@@ -773,8 +773,6 @@ section {
     .hero-buttons .btn {
         margin-right: 0;
         margin-bottom: 10px;
-        width: 80%; /* Make buttons wider on mobile */
-        max-width: 300px;
     }
     .hero-buttons .btn:last-child {
         margin-bottom: 0;
