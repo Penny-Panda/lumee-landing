@@ -1,0 +1,822 @@
+/* Global Styles */
+:root {
+    --color-primary: #F8D100; /* Yellow */
+    --color-secondary: #00C3E7; /* Blue */
+    --color-accent: #E60012; /* Red */
+    --color-accent-alt: #00AF67; /* Green */
+    --color-light: #FFFFFF;
+    --color-dark: #1F1F1F;
+    --color-gray: #6D6D6D;
+    --color-background: #EFF4F9; /* Light background for the page */
+
+    --font-display: 'Fredoka One', cursive;
+    --font-body: 'Inter', sans-serif;
+
+    --section-padding: 60px 0;
+    --card-border-radius: 20px; /* Unified card border radius from image */
+    --card-padding: 20px; /* Unified card padding */
+    --card-shadow: 0 5px 15px rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: var(--font-body);
+    color: var(--color-dark);
+    background-color: var(--color-background);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    color: var(--color-dark);
+    margin-top: 0;
+    margin-bottom: 0.75em;
+}
+
+h1 {
+    font-size: 3rem;
+    text-align: center;
+}
+
+.hero-section h1 {
+    font-size: 3.2rem;
+    color: var(--color-dark);
+}
+
+h2 {
+    font-size: 2.2rem;
+    text-align: center;
+    margin-bottom: 1em;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+.lumee-card-content h3 {
+    font-size: 1.25rem; /* Specific to Glimpse cards */
+    font-family: var(--font-body); /* Glimpse card titles use body font, bolded by default h3 */
+    font-weight: 700;
+}
+
+h4 {
+    font-size: 1.2rem;
+}
+
+p {
+    margin-bottom: 1em;
+    font-size: 1rem;
+    color: var(--color-gray);
+}
+
+p.sub-headline, p.section-sub-headline {
+    font-size: 1.15rem;
+    color: var(--color-gray);
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 1.5em;
+    text-align: center;
+}
+
+.hero-section .sub-headline {
+     color: var(--color-dark);
+}
+
+a {
+    color: var(--color-secondary);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 15px;
+    position: relative;
+    z-index: 2;
+}
+
+section {
+    padding: var(--section-padding);
+    position: relative;
+    overflow: hidden; 
+    background-color: var(--color-background);
+}
+
+.what-is-lumee-section, 
+.why-join-section,
+.how-lumee-works-section, 
+.glimpse-magic-section,
+.why-love-lumee-section {
+    background-color: var(--color-light);
+}
+
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 12px 28px;
+    font-family: var(--font-body);
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 50px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin: 5px;
+}
+
+.btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-dark);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+    color: var(--color-dark); /* Ensure text color remains dark on hover */
+}
+
+.btn-primary.btn-large {
+    /* Styles for large primary buttons, including those in hero and final CTA */
+    transform: scale(1.0); /* Base scale */
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Ensure transition is applied here too */
+}
+
+.btn-primary.btn-large:hover {
+    transform: translateY(-2px) scale(1.05); /* Combine translateY with scale for hover */
+    box-shadow: 0 8px 15px rgba(0,0,0,0.2); /* Enhanced shadow from final CTA */
+}
+
+.btn-secondary {
+    background-color: transparent;
+    color: var(--color-secondary); /* Blue text */
+    border: 2px solid var(--color-secondary); /* Blue border */
+}
+
+.btn-secondary:hover {
+    background-color: var(--color-secondary); /* Blue background on hover */
+    color: var(--color-light); /* Light text on hover */
+    transform: translateY(-2px);
+    box-shadow: 0 6px 10px rgba(0,0,0,0.15);
+}
+
+.btn-large {
+    padding: 15px 35px;
+    font-size: 1.25rem;
+}
+
+/* Lucide Icons Styling */
+.feature-icon {
+    stroke-width: 2;
+    margin-bottom: 15px;
+}
+
+.feature-icon.large-icon {
+    width: 50px; /* Adjusted size for How Lumee Works icons */
+    height: 50px;
+    margin-bottom: 20px;
+}
+
+.color-primary { color: var(--color-primary); stroke: var(--color-primary);}
+.color-secondary { color: var(--color-secondary); stroke: var(--color-secondary);}
+.color-accent { color: var(--color-accent); stroke: var(--color-accent);}
+.color-accent-alt { color: var(--color-accent-alt); stroke: var(--color-accent-alt);}
+
+/* Decorative Shapes */
+.shape {
+    position: absolute;
+    z-index: 1;
+    opacity: 0.08; /* Further reduced opacity for light theme */
+    pointer-events: none;
+}
+
+.shape-1 { width: 200px; height: 200px; background: radial-gradient(circle, var(--color-primary) 0%, transparent 70%); border-radius: 50%; top: 10%; left: -50px;}
+.shape-2 { width: 150px; height: 150px; background: radial-gradient(circle, var(--color-secondary) 0%, transparent 70%); top: 60%; right: -40px; transform: rotate(15deg);}
+.shape-3 { width: 180px; height: 180px; background: radial-gradient(circle, var(--color-accent-alt) 0%, transparent 70%); clip-path: polygon(50% 0%, 0% 100%, 100% 100%); bottom: 5%; left: 20%;}
+.shape-4 { width: 250px; height: 250px; background: radial-gradient(circle, var(--color-accent) 0%, transparent 70%); border-radius: 50%; top: 20%; right: -80px;}
+
+/* Hero Section */
+.hero-section {
+    padding-top: 60px; /* Adjusted padding */
+    padding-bottom: 60px;
+    /* text-align: center; Removed, will be handled by column layout */
+    min-height: auto; /* Adjusted from 80vh */
+    display: flex; /* Already flex, good */
+    align-items: center; /* Vertically align items in hero */
+}
+
+.hero-layout {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.hero-content {
+    flex: 1;
+    text-align: left;
+}
+
+.hero-section h1 {
+    text-align: left; /* Align hero h1 to left */
+    margin-bottom: 0.5em;
+}
+
+.hero-section .sub-headline {
+    text-align: left; /* Align hero sub-headline to left */
+    margin-left: 0; /* Remove auto margin for left alignment */
+    margin-right: 0;
+    max-width: none; /* Allow full width within its column */
+    margin-bottom: 1.5em;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+}
+
+.hero-buttons .btn {
+    margin-right: 15px; /* Space between buttons */
+}
+
+.hero-buttons .learn-how-btn {
+    margin-left: 0; /* Reset margin from previous style */
+}
+
+.hero-image-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-main-image {
+    max-width: 100%;
+    height: auto;
+    max-height: 450px; /* Control max height of the image */
+    border-radius: 8px; /* Optional: slight rounding for the image */
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+/* Visual placeholder for hero removed as it is replaced by hero-image-container */
+/*
+.hero-section .visual-placeholder {
+    width: 250px;
+    height: 250px;
+    background-color: var(--color-light); 
+    border: 3px dashed var(--color-secondary);
+    border-radius: 20px;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+.hero-section .visual-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+*/
+
+/* Why Join Section (Original) & Feature Grids */
+.features-grid {
+    display: grid;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.why-join-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 columns for horizontal layout */
+    gap: 20px; /* Smaller gap for a more compact look */
+}
+
+.why-join-item {
+    background-color: var(--color-light);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    box-shadow: var(--card-shadow);
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the top */
+}
+
+/* Styles for .icon-block removed, replaced by .feature-icon-inline */
+/*
+.icon-block {
+    width: 100px; 
+    height: 60px; 
+    border-radius: 8px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 15px;
+    color: var(--color-light); 
+    font-weight: 700;
+    font-family: var(--font-body);
+    font-size: 1rem;
+}
+
+.bg-green-alt-text { background-color: var(--color-accent-alt); } 
+.bg-red-text { background-color: var(--color-accent); } 
+.bg-blue-text { background-color: var(--color-secondary); } 
+*/
+
+.feature-icon-inline {
+    width: 48px; /* Size of the icon */
+    height: 48px;
+    stroke-width: 2; /* Lucide stroke width */
+    padding: 12px; /* Padding to create the block effect around the icon */
+    border-radius: 8px; /* Rounded corners for the block */
+    margin-bottom: 20px;
+    display: inline-flex; /* To allow padding and centering */
+    justify-content: center;
+    align-items: center;
+}
+
+/* Apply background colors to the icon containers, and icon color to light */
+.feature-icon-inline.color-accent-alt {
+    background-color: var(--color-accent-alt);
+    stroke: var(--color-light);
+    color: var(--color-light);
+}
+.feature-icon-inline.color-accent {
+    background-color: var(--color-accent);
+    stroke: var(--color-light);
+    color: var(--color-light);
+}
+.feature-icon-inline.color-secondary {
+    background-color: var(--color-secondary);
+    stroke: var(--color-light);
+    color: var(--color-light);
+}
+
+.why-join-item p {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    line-height: 1.5;
+    margin-top: auto; /* Push text to bottom if icon blocks vary in perceived height */
+}
+
+/* Remove old feature-icon specific styles if they conflict, or ensure they don't apply here */
+.why-join-section .feature-icon { /* Example of overriding if needed, but structure changed */
+    display: none; /* Hide old icons if any linger due to class reuse */
+}
+
+.three-column-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+
+.feature-item {
+    background-color: var(--color-light);
+    padding: var(--card-padding);
+    border-radius: var(--card-border-radius);
+    text-align: center;
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}
+
+.feature-item h3 {
+    margin-bottom: 10px;
+    font-size: 1.4rem;
+}
+.feature-item p {
+    font-size: 0.95rem;
+    color: var(--color-gray);
+}
+
+/* How Lumee Works Section Specifics */
+/* Styles for .card-image removed as the element is commented out in HTML */
+/*
+.how-lumee-works-section .feature-item .card-image {
+    width: 100%;
+    max-height: 180px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin: 15px 0;
+}
+*/
+
+.how-lumee-works-section .feature-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center icon, title, and text */
+}
+
+.how-lumee-works-section .feature-item h3 {
+    margin-top: 0; /* Reduce space above h3 if icon has margin-bottom */
+    margin-bottom: 15px;
+}
+
+.how-lumee-works-section .feature-item p {
+    font-size: 0.9rem; /* Slightly smaller text for these cards */
+}
+
+/* Why You'll Love Lumee Section Specifics */
+.six-items-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Adjusted minmax for 6 items */
+}
+
+.why-love-lumee-section .feature-item.small-card {
+    padding: var(--card-padding);
+    background-color: var(--color-light);
+    box-shadow: none; 
+    border-radius: var(--card-border-radius);
+    border: 1px solid #e8e8e8;
+    text-align: left; /* Text align left as per image */
+}
+
+.why-love-lumee-section .feature-item.small-card:hover {
+     box-shadow: var(--card-shadow);
+}
+
+.icon-circle-bg {
+    width: 48px; /* Adjusted size */
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px; /* Margin below icon circle */
+}
+.icon-circle-bg .feature-icon {
+    width: 24px; /* Icon size within circle */
+    height: 24px;
+    color: var(--color-light); 
+    stroke: var(--color-light); /* Ensure stroke is also light */
+    margin-bottom: 0;
+}
+
+.bg-yellow { background-color: var(--color-primary); }
+.bg-blue { background-color: var(--color-secondary); }
+.bg-green { background-color: var(--color-accent-alt); }
+.bg-red { background-color: var(--color-accent); }
+
+.why-love-lumee-section .feature-item h4 {
+    margin-bottom: 8px;
+    font-size: 1.15rem; /* Adjusted size */
+    font-family: var(--font-body); /* Body font, bold */
+    font-weight: 700;
+    color: var(--color-dark);
+}
+.why-love-lumee-section .feature-item p {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    line-height: 1.5;
+}
+
+/* A Glimpse of the Magic Section */
+.glimpse-magic-section {
+    /* background-color: var(--color-background); */ /* Uses default light already */
+}
+.lumee-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Adjusted min-width slightly */
+    gap: 25px;
+}
+
+.lumee-card-outer {
+    background-color: var(--color-light);
+    border-radius: var(--card-border-radius);
+    padding: var(--card-padding);
+    box-shadow: var(--card-shadow);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* For vertical alignment of content */
+    flex-direction: column; /* Stack content vertically */
+}
+
+.lumee-card-outer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+}
+
+.lumee-card-inner .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.rarity-tag {
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+}
+
+.rarity-tag.basic {
+    background-color: var(--color-gray);
+    color: var(--color-light);
+}
+.rarity-tag.unusual {
+    background-color: var(--color-accent-alt); /* Green */
+    color: var(--color-light);
+}
+/* .rarity-tag.common, .rarity-tag.rare, .rarity-tag.epic for future use if needed */
+
+.lumee-card-inner .star-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--color-primary); 
+    fill: var(--color-primary); 
+    stroke-width: 1.5;
+}
+
+.lumee-card-image {
+    width: 100%;
+    height: 200px; /* Fixed height for image container */
+    object-fit: cover;
+    border-radius: 10px; /* Slightly less rounded than outer card */
+    margin-bottom: 15px;
+    background-color: #f0f0f0; /* Fallback for unloaded images */
+}
+
+.lumee-card-content {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1; /* Allows footer to be pushed to bottom */
+}
+
+.lumee-card-content .card-subtitle {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-family: var(--font-body);
+}
+
+.lumee-card-content .card-description {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    margin-bottom: 15px;
+    line-height: 1.5;
+    flex-grow: 1; /* Pushes footer down */
+}
+
+.lumee-card-inner .card-footer-elements {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto; 
+    padding-top: 10px;
+    border-top: 1px solid #eee;
+}
+
+.stat-chart-placeholder .hex-icon,
+.share-icon-placeholder i {
+    width: 24px; /* Adjusted size */
+    height: 24px;
+    color: var(--color-gray);
+    stroke-width: 1.5;
+}
+
+.share-icon-placeholder {
+    padding: 6px;
+    background-color: #f0f0f0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    display: flex; /* To center icon inside */
+    align-items: center;
+    justify-content: center;
+}
+
+.share-icon-placeholder:hover {
+    background-color: #e0e0e0;
+}
+
+/* Waitlist Form Section */
+.waitlist-form-section {
+    background-color: var(--color-light);
+    padding-bottom: 80px;
+    text-align: center; /* Center align all text content within this section */
+}
+
+.waitlist-form-section h2 {
+    /* text-align: center; Inherited from section now */
+}
+
+.waitlist-form-section p {
+    /* text-align: center; Inherited from section now */
+    max-width: 700px; /* Retain max-width for readability */
+    margin-left: auto; /* Center the paragraph block */
+    margin-right: auto; /* Center the paragraph block */
+    margin-bottom: 1.5em; /* Existing margin */
+    color: var(--color-gray); /* Existing color */
+    font-size: 1.15rem; /* Match other sub-headlines if this is one */
+}
+
+.tally-form-embed-container { /* Changed from -placeholder */
+    width: 100%;
+    max-width: 650px; /* Max width for the form for better readability */
+    margin: 20px auto 0 auto;
+    /* Removing placeholder styles: 
+    min-height: 300px; 
+    background-color: #f9f9f9;
+    border: 2px dashed var(--color-gray);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    color: var(--color-gray);
+    */
+}
+
+.tally-form-embed-container iframe {
+    display: block; /* Ensures iframe behaves as a block element */
+    border-radius: var(--card-border-radius); /* Optional: match card rounding */
+    box-shadow: var(--card-shadow); /* Optional: add a subtle shadow */
+}
+
+/* Final CTA Section */
+.final-cta-section {
+    background-color: var(--color-secondary);
+    padding: 80px 0;
+    text-align: center; /* Ensure text and button are centered */
+}
+.final-cta-section h2 {
+    color: var(--color-light);
+    font-size: 2.5rem;
+}
+.final-cta-section p.sub-headline {
+    color: rgba(255,255,255,0.85);
+    margin-bottom: 30px;
+}
+/* Specific styles for .final-cta-section .btn-primary can be removed or merged if covered by .btn-primary.btn-large */
+/*
+.final-cta-section .btn-primary {
+    background-color: var(--color-primary);
+    color: var(--color-dark);
+    transform: scale(1.05);
+}
+.final-cta-section .btn-primary:hover {
+     box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+}
+*/
+
+/* Footer Section */
+.footer-section {
+    background-color: var(--color-dark);
+    color: var(--color-gray);
+    text-align: center;
+    padding: 40px 0;
+    font-size: 0.9rem;
+}
+
+.footer-section p {
+    margin: 0; /* Removed bottom margin as it's the only element now */
+    color: var(--color-gray);
+}
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .six-items-grid {
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); /* Adjust for slightly smaller cards */
+    }
+    .lumee-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+    .why-join-grid {
+        grid-template-columns: 1fr; /* Stack on tablet and mobile */
+    }
+}
+
+@media (max-width: 768px) {
+    h1 { font-size: 2.5rem; }
+    .hero-section h1 { 
+        font-size: 2.2rem; /* Adjust for mobile */
+        /* text-align: center; Will be inherited from .hero-content */
+    }
+    .hero-section .sub-headline { 
+        font-size: 1rem; 
+        /* text-align: center; Will be inherited from .hero-content */
+    }
+    h2 { font-size: 1.8rem; }
+    p.sub-headline, p.section-sub-headline { font-size: 1rem; }
+
+    .two-column-layout { flex-direction: column; }
+    .what-is-lumee-section h2 { text-align: center; }
+    .what-is-lumee-section .visual-placeholder { height: 250px; }
+
+    .features-grid,
+    .lumee-cards-grid,
+    .six-items-grid,
+    .why-join-grid { /* Ensure it stacks on mobile too */
+        grid-template-columns: 1fr;
+    }
+
+    .shape { opacity: 0.05; }
+    .shape-1 { width: 150px; height: 150px; top: 5%; left: -75px;}
+    .shape-2 { width: 100px; height: 100px; top: 70%; right: -50px;}
+    .shape-3 { width: 120px; height: 120px; bottom: 2%; left: 10%;}
+    .shape-4 { width: 180px; height: 180px; top: 15%; right: -90px;}
+
+    .btn { padding: 10px 24px; font-size: 1rem; }
+    .btn-large { padding: 12px 30px; font-size: 1.1rem; }
+
+    .final-cta-section h2 { font-size: 2rem;}
+    .lumee-card-content .card-description { font-size: 0.85rem; }
+    .lumee-card-image { height: 180px; } /* Adjust image height on mobile */
+    .why-love-lumee-section .feature-item.small-card {
+        text-align: center; /* Center text on mobile for these cards */
+    }
+    .icon-circle-bg {
+        margin-left: auto; margin-right: auto; /* Center icon circle on mobile */
+    }
+
+    .hero-layout {
+        flex-direction: column;
+        /* text-align: center; Removed, will be handled by hero-content directly */
+    }
+    .hero-content {
+        margin-bottom: 30px;
+        text-align: center; /* Ensure text and buttons container are centered */
+    }
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .hero-buttons .btn {
+        margin-right: 0;
+        margin-bottom: 10px;
+        width: 80%; /* Make buttons wider on mobile */
+        max-width: 300px;
+    }
+    .hero-buttons .btn:last-child {
+        margin-bottom: 0;
+    }
+
+    .what-is-lumee-section h2 { text-align: center; }
+    /* .what-is-lumee-section .visual-placeholder { height: 250px; } */ /* Already removed */
+
+    .features-grid,
+    .lumee-cards-grid,
+    .six-items-grid,
+    .why-join-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Animations & Accessibility */
+section:not(.footer-section):not(.final-cta-section) {
+    animation: fadeInSection 0.8s ease-in-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeInSection {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+#what-is-lumee { animation-delay: 0.1s; }
+#why-join { animation-delay: 0.2s; }
+#waitlist { animation-delay: 0.3s; }
+#how-it-works { animation-delay: 0.4s; }
+#why-love-lumee { animation-delay: 0.5s; }
+#glimpse-of-magic { animation-delay: 0.6s; }
+
+.footer-section, .final-cta-section { animation: none; opacity: 1;}
+
+a:focus, .btn:focus {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 3px;
+}
+
+/* Removing button ripple effect for cleaner look, can be re-added if desired */
+/*
+.btn::after { 
+    content: ""; display: block; position: absolute;
+    width: 100%; height: 100%; top: 0; left: 0;
+    pointer-events: none;
+    background-image: radial-gradient(circle, var(--color-dark) 10%, transparent 10.01%);
+    background-repeat: no-repeat; background-position: 50%;
+    transform: scale(10, 10); opacity: 0;
+    transition: transform .3s, opacity .5s;
+}
+
+.btn:active::after {
+    transform: scale(0, 0); opacity: .2;
+    transition: 0s;
+}
+*/ 
