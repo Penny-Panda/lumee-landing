@@ -1,21 +1,28 @@
 /* Global Styles */
 :root {
     --color-primary: #F8D100; /* Yellow */
+    --color-primary-rgb: 248, 209, 0;
+    --color-primary-dark: #e0bb00; /* Darker yellow for hover */
     --color-secondary: #00C3E7; /* Blue */
+    --color-secondary-rgb: 0, 195, 231;
     --color-accent: #E60012; /* Red */
+    --color-accent-rgb: 230, 0, 18;
     --color-accent-alt: #00AF67; /* Green */
+    --color-accent-alt-rgb: 0, 175, 103;
+    --color-accent-alt-dark: #008c53; /* Darker Green for hover */
     --color-light: #FFFFFF;
     --color-dark: #1F1F1F;
     --color-gray: #6D6D6D;
     --color-background: #EFF4F9; /* Light background for the page */
+    --color-dark-rgb: 31, 31, 31; /* Fallback if not set, ensure this matches your --color-dark */
 
     --font-display: 'Fredoka One', cursive;
     --font-body: 'Inter', sans-serif;
 
     --section-padding: 60px 0;
-    --card-border-radius: 20px; /* Unified card border radius from image */
-    --card-padding: 20px; /* Unified card padding */
-    --card-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    --card-border-radius: 16px; /* Adjusted for new image */
+    --card-padding: 20px; /* Adjusted padding for new image */
+    --card-shadow: 0 4px 12px rgba(0,0,0,0.08); /* Softer, slightly more pronounced shadow */
 }
 
 body {
@@ -455,116 +462,181 @@ section {
 }
 
 .lumee-card-outer {
-    background-color: var(--color-light);
-    border-radius: var(--card-border-radius);
-    padding: var(--card-padding);
-    box-shadow: var(--card-shadow);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    display: flex; /* For vertical alignment of content */
-    flex-direction: column; /* Stack content vertically */
+    padding: 0; /* Remove outer padding, rely on card's own shadow and layout gap */
+    /* Removing box-shadow from here if lumee-card-inner handles it */
+    transition: transform 0.3s ease; /* Added for smooth bobbing effect */
 }
 
 .lumee-card-outer:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    transform: translateY(-4px); /* Slight lift on hover for the whole card */
+}
+
+.lumee-card-inner {
+    background-color: var(--color-light); /* White background */
+    /* border: 1px solid #e0e0e0; */ /* Removed border, rely on shadow */
+    border: none;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-shadow); /* Apply the new shadow */
+    padding: var(--card-padding);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.lumee-card-inner:hover {
+     box-shadow: 0 6px 16px rgba(0,0,0,0.12); /* Enhanced shadow on hover */
 }
 
 .lumee-card-inner .card-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 12px;
+    margin-bottom: 15px; /* Space below header */
+}
+
+.star-rating {
+    display: flex; /* Align stars in a row */
+}
+
+.star-rating .card-icon.star-icon {
+    margin-left: -4px; /* Negative margin to pull stars closer. Adjust as needed. */
+}
+
+.star-rating .card-icon.star-icon:first-child {
+    margin-left: 0; /* No negative margin for the first star */
 }
 
 .rarity-tag {
-    padding: 4px 10px;
+    padding: 5px 12px; /* Slightly more padding */
     border-radius: 6px;
-    font-size: 0.75rem;
+    font-size: 0.7rem; /* Adjusted font size */
     font-weight: 700;
-    font-family: var(--font-body);
     text-transform: uppercase;
+    color: var(--color-light); /* White text for all tags */
+    line-height: 1;
 }
 
+.rarity-tag.learn { /* Old style, might remove or keep as fallback if needed */
+    background-color: #555;
+}
+.rarity-tag.rare { /* Old style, might remove or keep as fallback if needed */
+    background-color: var(--color-secondary);
+}
 .rarity-tag.basic {
-    background-color: var(--color-gray);
+    background-color: #525252; /* Dark gray for BASIC from image */
     color: var(--color-light);
 }
 .rarity-tag.unusual {
-    background-color: var(--color-accent-alt); /* Green */
+    background-color: var(--color-accent-alt); /* Green for UNUSUAL from image */
     color: var(--color-light);
 }
-/* .rarity-tag.common, .rarity-tag.rare, .rarity-tag.epic for future use if needed */
 
-.lumee-card-inner .star-icon {
-    width: 20px;
-    height: 20px;
-    color: var(--color-primary); 
-    fill: var(--color-primary); 
-    stroke-width: 1.5;
+.rarity-tag.mythic {
+    background-color: gold;
+    color: #000; /* Ensuring text is readable on gold */
+}
+
+/* Remove any specific background overrides for rarity tags if they conflict */
+
+.lumee-card-inner .card-icon {
+    width: 22px;
+    height: 22px;
+    stroke-width: 2;
+    color: var(--color-gray); /* Default for non-star icons */
+}
+
+.lumee-card-inner .card-icon.star-icon { /* Specific for the yellow star */
+    color: var(--color-primary);
+    fill: var(--color-primary);
 }
 
 .lumee-card-image {
     width: 100%;
-    height: 200px; /* Fixed height for image container */
+    height: 180px; /* Adjusted height */
     object-fit: cover;
-    border-radius: 10px; /* Slightly less rounded than outer card */
-    margin-bottom: 15px;
-    background-color: #f0f0f0; /* Fallback for unloaded images */
+    border-radius: 10px; /* Rounded corners for the image */
+    margin-bottom: 15px; /* Space below image */
 }
 
 .lumee-card-content {
     display: flex;
     flex-direction: column;
-    flex-grow: 1; /* Allows footer to be pushed to bottom */
+    flex-grow: 1;
+    padding: 0;
+}
+
+.lumee-card-content h3 {
+    font-size: 1.15rem; /* Adjusted title size from image */
+    font-family: var(--font-body);
+    font-weight: 700;
+    color: var(--color-dark);
+    margin-bottom: 6px;
 }
 
 .lumee-card-content .card-subtitle {
-    font-size: 0.8rem;
+    font-size: 0.75rem; /* Adjusted subtitle size from image */
     color: var(--color-gray);
-    margin-bottom: 8px;
+    margin-bottom: 10px; /* Space below subtitle */
     text-transform: uppercase;
     font-weight: 600;
-    font-family: var(--font-body);
+    letter-spacing: 0.5px;
 }
 
 .lumee-card-content .card-description {
-    font-size: 0.9rem;
+    font-size: 0.875rem; /* Adjusted description size from image */
     color: var(--color-gray);
-    margin-bottom: 15px;
-    line-height: 1.5;
-    flex-grow: 1; /* Pushes footer down */
+    line-height: 1.55;
+    margin-bottom: 15px; /* Space below description */
+    flex-grow: 1;
 }
 
 .lumee-card-inner .card-footer-elements {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: auto; 
+    margin-top: auto;
     padding-top: 10px;
-    border-top: 1px solid #eee;
+    border-top: none; /* No border-top as per new image */
 }
 
 .stat-chart-placeholder .hex-icon,
 .share-icon-placeholder i {
-    width: 24px; /* Adjusted size */
-    height: 24px;
+    width: 22px; /* Adjusted icon size */
+    height: 22px;
     color: var(--color-gray);
-    stroke-width: 1.5;
+    stroke-width: 2;
 }
 
 .share-icon-placeholder {
-    padding: 6px;
-    background-color: #f0f0f0;
-    border-radius: 50%;
     cursor: pointer;
+    padding: 4px; /* Minimal padding around icon */
+    border-radius: 50%;
     transition: background-color 0.2s ease;
-    display: flex; /* To center icon inside */
+    display: inline-flex; /* Align icon nicely */
     align-items: center;
     justify-content: center;
 }
 
 .share-icon-placeholder:hover {
-    background-color: #e0e0e0;
+    background-color: #efefef;
+}
+.share-icon-placeholder:hover i {
+    color: var(--color-secondary);
+}
+
+.learning-tags {
+    display: none; /* Hide learning tags as per new image */
+    gap: 5px;
+}
+
+/* Ensure any conflicting styles for these elements are overridden or removed. */
+/* For example, if .lumee-card-inner .learning-card or .explorer-card have different paddings/borders */
+
+.lumee-card-inner.learning-card,
+.lumee-card-inner.explorer-card {
+    /* Reset specific styles if they were overriding the new base .lumee-card-inner style */
+    /* e.g., padding: var(--card-padding); */
 }
 
 /* Waitlist Form Section */
@@ -710,6 +782,7 @@ section {
     .hero-buttons .btn {
         margin-right: 0;
         margin-bottom: 10px;
+        margin-left: 0; /* Ensure symmetrical horizontal margins for centering */
     }
     .hero-buttons .btn:last-child {
         margin-bottom: 0;
@@ -909,15 +982,15 @@ a:focus, .btn:focus {
 }
 
 .teaser-highlight {
-    background: linear-gradient(135deg, rgba(248, 209, 0, 0.1) 0%, rgba(0, 195, 231, 0.1) 100%);
-    padding: 20px 25px;
-    border-radius: 16px;
-    border: 1px solid var(--color-primary);
     display: flex;
-    align-items: flex-start;
-    gap: 15px;
-    text-align: left;
-    margin-top: 25px;
+    align-items: center;
+    gap: 0.5em;
+    background-color: rgba(var(--color-secondary-rgb), 0.1);
+    border-left: 4px solid var(--color-secondary);
+    padding: 15px 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    font-size: 0.95rem;
 }
 
 .highlight-icon {
@@ -985,4 +1058,258 @@ a:focus, .btn:focus {
     .coming-soon-section h3 span {
         font-size: 2rem;
     }
+}
+
+.purpose-card {
+    background: var(--color-light);
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--card-shadow);
+    padding: 25px; /* Original internal padding */
+    /* margin: 10px; */ /* Remove margin from base, will be overridden or handled by gap */
+    flex: 1; 
+    min-width: 300px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 2px solid transparent; /* Base border, specific cards override color */
+    box-sizing: border-box; 
+}
+
+.purpose-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1); /* Using a similar shadow to other cards */
+}
+
+.purpose-card .card-content {
+    padding: 10px;
+}
+
+.purpose-card h2 {
+    font-size: 1.8rem;
+    margin-bottom: 0.3em;
+    color: var(--color-dark);
+}
+
+.purpose-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5em;
+    color: var(--color-gray);
+}
+
+.purpose-card p {
+    margin-bottom: 0.8em;
+}
+
+.feature-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.8em 0;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5em;
+    font-size: 0.95rem;
+}
+
+.list-icon {
+    width: 18px;
+    height: 18px;
+    margin-right: 8px;
+    flex-shrink: 0;
+}
+
+.card-highlight {
+    background: rgba(var(--color-primary-rgb), 0.1);
+    border-radius: 12px;
+    padding: 12px;
+    margin-top: 0.8em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.card-highlight p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.feature-icon.large-icon {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.learning-card {
+    border: 2px solid var(--color-accent);
+}
+
+.learning-card h2 {
+    color: var(--color-accent);
+}
+
+.learning-card .list-icon {
+    color: var(--color-accent);
+}
+
+.adventure-card {
+    border: 2px solid var(--color-accent-alt);
+}
+
+.adventure-card h2 {
+    color: var(--color-accent-alt);
+}
+
+.adventure-card .list-icon {
+    color: var(--color-accent-alt);
+}
+
+.purpose-card h2 {
+    margin: 20px 0 10px;
+    text-align: left;
+}
+
+.purpose-card h3 {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+    color: var(--color-text);
+    text-align: left;
+}
+
+.purpose-card p {
+    text-align: left;
+}
+
+.card-highlight {
+    margin-top: auto;
+    padding: 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    text-align: left;
+}
+
+.learning-card .card-highlight {
+    background: rgba(var(--color-accent-rgb), 0.05);
+}
+
+.adventure-card .card-highlight {
+    background: rgba(var(--color-accent-alt-rgb), 0.05);
+}
+
+.highlight-icon {
+    font-size: 24px;
+    flex-shrink: 0;
+}
+
+.dual-cards {
+    display: flex;
+    gap: 20px; /* Gap between cards on desktop */
+    justify-content: center; 
+}
+
+@media (max-width: 768px) {
+    .dual-cards {
+        flex-direction: column;
+        align-items: center; 
+    }
+
+    .dual-cards .purpose-card {
+        width: 100%; 
+        max-width: 500px; /* Optional: prevent cards from becoming too wide on larger mobile/small tablet */
+        margin-bottom: 20px; 
+        margin-left: 0; /* Ensure no unintended horizontal margin */
+        margin-right: 0; /* Ensure no unintended horizontal margin */
+        flex: 1 1 auto; /* Allow card to grow/shrink but base on its content */
+    }
+
+    .dual-cards .purpose-card:last-child {
+        margin-bottom: 0;
+    }
+}
+
+/* Ensure the global --color-dark-rgb variable exists if not already defined elsewhere */
+:root {
+    /* ... other root variables ... */
+    --color-dark-rgb: 31, 31, 31; /* Fallback if not set, ensure this matches your --color-dark */
+}
+
+/* ... existing code ... */
+
+.dual-purpose-section .card-highlight {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    display: flex; /* Added for vertical alignment */
+    align-items: center; /* Added for vertical alignment */
+}
+
+.learning-card .card-highlight {
+    background: rgba(var(--color-accent-rgb), 0.05);
+}
+
+/* Floating Share Button Styles */
+.floating-share-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: var(--color-primary); /* Yellow */
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.2s ease, box-shadow 0.2s ease; /* Updated transition */
+}
+
+.floating-share-btn:hover {
+    /* background-color: var(--color-primary-dark); */ /* Removed color change */
+    transform: scale(1.05); /* Only scale, no translateY */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.25); /* Enhanced shadow */
+}
+
+.floating-share-btn svg {
+    width: 24px; /* Adjust size as needed */
+    height: 24px;
+    stroke: var(--color-dark); /* Changed to Dark/Black */
+    color: var(--color-dark);   /* Fallback for fill, also Dark/Black */
+}
+
+/* Responsive adjustments for the floating button if needed */
+@media (max-width: 768px) {
+    .floating-share-btn {
+        bottom: 15px;
+        right: 15px;
+        width: 45px;
+        height: 45px;
+    }
+    .floating-share-btn svg { /* Changed selector from i to svg */
+        width: 20px;
+        height: 20px;
+    }
+}
+
+/* Site Header Styles */
+.site-header {
+    background-color: var(--color-dark);
+    padding: 10px 0;
+}
+
+.site-header-container {
+    text-align: center;
+}
+
+.site-logo-link {
+    text-decoration: none;
+}
+
+.site-title-text {
+    font-family: var(--font-display);
+    color: var(--color-primary); /* Lumee in yellow */
+    font-size: 2rem;
+    font-weight: normal; /* Fredoka One is already bold */
 } 
